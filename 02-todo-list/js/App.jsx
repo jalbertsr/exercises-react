@@ -34,17 +34,23 @@ class App extends React.Component {
     })
   }
 
-  removeTask =id => {
+  removeTask = id => {
     this.setState({
-      list: this.state.list.filter(task => id !== task.id)
+      list: this.state.list.filter(task => id != task.id)
     })
   }
 
   render () {
     return (
-      <div>
-        <Todo addItem={this.addItem} list={this.state.list} markAsDone={this.markAsDone} markAll={this.markAllAsCompleted}/>
-        <Done list={this.state.list} deleteItem={this.removeTask}/>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-6'>
+            <Todo addItem={this.addItem} list={this.state.list} markAsDone={this.markAsDone} markAll={this.markAllAsCompleted} />
+          </div>
+          <div className='col-md-6'>
+            <Done list={this.state.list} deleteItem={this.removeTask} />
+          </div>
+        </div>
       </div>
     )
   }

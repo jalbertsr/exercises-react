@@ -4,8 +4,7 @@ class Done extends React.Component {
   }
 
   handleClick = (e) => {
-    console.log('borrar')
-    this.props.deleteItem(e.target.value)
+    this.props.deleteItem(e.currentTarget.dataset.id)
   }
 
   render () {
@@ -19,7 +18,10 @@ class Done extends React.Component {
             return (
               <li key={i} className='ui-state-default'>
                 <div className='checkbox'>
-                  <p value={task.id}> {task.item}</p><span><i onClick={this.handleClick} className='fa fa-trash-o' aria-hidden='true' /></span>
+                  <p> {task.item}</p>
+                  <button>
+                    <span data-id={task.id} onClick={this.handleClick} className='fa fa-trash-o' aria-hidden='true' />
+                  </button>
                 </div>
               </li>
             )
